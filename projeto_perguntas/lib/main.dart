@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './questionario.dart';
 import './resultado.dart';
 
-main() => runApp(PerguntaApp());
+main() => runApp(const PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
 
@@ -81,6 +81,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
 }
 
 class PerguntaApp extends StatefulWidget{
+  const PerguntaApp({Key? key}) : super(key: key);
+
 
   @override
   _PerguntaAppState createState() {
