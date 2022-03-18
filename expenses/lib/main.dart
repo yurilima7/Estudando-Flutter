@@ -117,22 +117,26 @@ class MyHomePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(  
-                children: const <Widget>[
-                  TextField(
+                children: <Widget>[
+                  const TextField(
                     decoration: InputDecoration(
                       labelText: 'Titulo',
                     ),
                   ),
 
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(
                       labelText: 'Valor (R\$)',
                     ),
                   ),
 
-                  ElevatedButton(
-                    child: Text('Nova Transação'),
-                    onPressed: null,
+                  Row(
+                    children: const [
+                      ElevatedButton(
+                        child: Text('Nova Transação'),
+                        onPressed: null,
+                      ),
+                    ],
                   ),
                 ],
               ),
