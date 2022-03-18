@@ -1,5 +1,6 @@
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 main() => runApp(const ExpensesApp());
 
@@ -41,7 +42,7 @@ class MyHomePage extends StatelessWidget {
       ),
 
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
         children: <Widget>[
@@ -57,7 +58,7 @@ class MyHomePage extends StatelessWidget {
             children: _transactions.map((tr) {
               return Card(
                 child: Row(
-                  children: <Widget>[
+                  children: <Widget>[                    
                     Container(
                       margin: const EdgeInsets.symmetric(
                         horizontal: 15,
@@ -74,7 +75,7 @@ class MyHomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       
                       child: Text(
-                        tr.value.toString(),
+                        'R\$ ${tr.value.toStringAsFixed(2)}',
 
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -97,7 +98,7 @@ class MyHomePage extends StatelessWidget {
                         ),
 
                         Text(
-                          tr.date.toString(),
+                          DateFormat('d MMM y').format(tr.date),
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
@@ -108,6 +109,34 @@ class MyHomePage extends StatelessWidget {
                 ),
               );
             }).toList(),
+          ),
+
+          Card(
+            elevation: 5,
+
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(  
+                children: const <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Titulo',
+                    ),
+                  ),
+
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Valor (R\$)',
+                    ),
+                  ),
+
+                  ElevatedButton(
+                    child: Text('Nova Transação'),
+                    onPressed: null,
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
