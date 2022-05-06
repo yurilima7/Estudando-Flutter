@@ -6,17 +6,17 @@ class TransactionList extends StatelessWidget {
 
   final List<Transaction> transactions;
 
-  TransactionList(this.transactions);
+  TransactionList(this.transactions); // recebe a lista de transações
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
         child: ListView.builder(
-          itemCount: transactions.length,
+          itemCount: transactions.length, // recebe a quantidade de transações
           itemBuilder: (ctx, index){
-            final tr = transactions[index];
-            return Card(
+            final tr = transactions[index]; // recebe a transação atual
+            return Card( // card que exibe todos os dados das transações
                   child: Row(
                     children: <Widget>[                    
                       Container(
@@ -34,7 +34,7 @@ class TransactionList extends StatelessWidget {
       
                         padding: const EdgeInsets.all(10),
                         
-                        child: Text(
+                        child: Text( // child responsável por exibir o valor
                           'R\$ ${tr.value.toStringAsFixed(2)}',
       
                           style: const TextStyle(
@@ -49,7 +49,7 @@ class TransactionList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
       
                         children: <Widget>[
-                          Text(
+                          Text( // children responsável por exibir o título da transação
                             tr.title,
                             style: const TextStyle(
                               fontSize: 16,
@@ -57,7 +57,7 @@ class TransactionList extends StatelessWidget {
                             ),
                           ),
       
-                          Text(
+                          Text( // children que exibe a data da transação
                             DateFormat('d MMM y').format(tr.date),
                             style: const TextStyle(
                               color: Colors.grey,

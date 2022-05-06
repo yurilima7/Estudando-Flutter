@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-   final _transactions = [
+   final _transactions = [ // map de transações
     Transaction(
       id: 't1', 
       title: 'Novo Tênis de Corrida',
@@ -42,24 +42,24 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
-  _addTransaction(String title, double value){
-    final newTransaction = Transaction(
+  _addTransaction(String title, double value){ // adiciona uma nova transação
+    final newTransaction = Transaction( // cria objetos transactions
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
       date: DateTime.now(),
     );
 
-    setState(() {
+    setState(() { // seta os dados informados
       _transactions.add(newTransaction);
     });
   }
 
-  _opentransactionFormModal(BuildContext context){
+  _opentransactionFormModal(BuildContext context){ // abre o modal para adição de transações
     showModalBottomSheet(
       context: context, 
       builder: (_){
-        return TransactionForm(null);
+        return TransactionForm(_addTransaction);
       }
     );
   }
@@ -70,14 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Despesas Pessoais'),
         actions: <Widget>[
-          IconButton(
+          IconButton( // botão superior
             icon: const Icon(Icons.add),
-            onPressed: () =>  _opentransactionFormModal(context),
+            onPressed: () =>  _opentransactionFormModal(context), // chama a abertura do modal para inserir novas transações
           )
         ],
       ),
 
-      body: SingleChildScrollView(
+      body: SingleChildScrollView( // responsável pela scroll view geral da tela
         child: Column(   
           crossAxisAlignment: CrossAxisAlignment.stretch,
         
@@ -90,17 +90,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
         
-           TransactionList(_transactions),
+           TransactionList(_transactions), // chama a exibição das listas de transações (seus cards)
           ],
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( // botão flutuante inferior
         child: const Icon(Icons.add),
-        onPressed: () =>  _opentransactionFormModal(context),
+        onPressed: () =>  _opentransactionFormModal(context), // chama a abertura do modal para inserir novas transações
       ),
 
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat, // define a localização do botão flutuante na tela
     );
   }
 }

@@ -1,3 +1,4 @@
+// classe com os dados que serão inseridos nas transações
 class Transaction {
   final String id;
   final String title;
