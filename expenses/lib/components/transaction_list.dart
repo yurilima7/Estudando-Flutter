@@ -51,10 +51,7 @@ class TransactionList extends StatelessWidget {
                         children: <Widget>[
                           Text( // children responsável por exibir o título da transação
                             tr.title,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold
-                            ),
+                            style: Theme.of(context).textTheme.headline6,
                           ),
       
                           Text( // children que exibe a data da transação
