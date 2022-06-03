@@ -1,3 +1,4 @@
+import 'package:expenses/components/chart_bar.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class Chart extends StatelessWidget {
   Chart(this.recentTransaction);
 
   List<Map<String, Object>> get groupedTransactions {
-    // retorna um list e dentro dessa list um map
+    // retorna uma list e dentro dessa list um map
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(
         Duration(days: index),
@@ -19,7 +20,8 @@ class Chart extends StatelessWidget {
       double totalSum = 0.0;
 
       for (var i = 0; i < recentTransaction.length; i++) {
-        bool sameDay = recentTransaction[i].date.day == weekDay.day; // Pega o dia da última semana
+        bool sameDay = recentTransaction[i].date.day ==
+            weekDay.day; // Pega o dia da última semana
         bool sameMounth = recentTransaction[i].date.month == weekDay.month;
         bool sameYear = recentTransaction[i].date.year == weekDay.year;
 
@@ -29,11 +31,9 @@ class Chart extends StatelessWidget {
         }
       }
 
-      print(DateFormat.E().format(weekDay)[0]);
-      print(totalSum);
-
       return {
-        'day': DateFormat.E().format(weekDay)[0], // Pegando a primeira letra do dia da semana selecionado
+        'day': DateFormat.E().format(weekDay)[
+            0], // Pegando a primeira letra do dia da semana selecionado
         'value': totalSum,
       };
     });
@@ -41,11 +41,19 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    groupedTransactions;
     return Card(
       elevation: 6,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Row(
-        children: <Widget>[],
+        // colocando dia, valor e porcentagem dentro do card
+        children: groupedTransactions.map((tr) {
+          return ChartBar(
+            label: tr['day'].toString(), 
+            value: double.parse(tr['value'].toString()), 
+            percentage: 0,
+          );
+        }).toList(),
       ),
     );
   }
