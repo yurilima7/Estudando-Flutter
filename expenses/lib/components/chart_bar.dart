@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ChartBar extends StatelessWidget {
   //const ChartBar({Key? key}) : super(key: key);
@@ -15,12 +14,14 @@ class ChartBar extends StatelessWidget {
     // gráfico de dados
     return Column(
       children: <Widget>[
-        Text('R\$${value.toStringAsFixed(2)}'),
+        FittedBox( // diminui o valor do texto para se adequar na tela
+          child: Text('${value.toStringAsFixed(2)}'),
+        ),
         const SizedBox(
           height: 5,
         ),
 
-        Container(
+        SizedBox(
           height: 60,
           width: 10,
           // barras
@@ -42,7 +43,7 @@ class ChartBar extends StatelessWidget {
                 ),
               ),
 
-              // responsável por pintar pela porcentagem
+              // responsável por pintar de acorddo com a porcentagem
               FractionallySizedBox(
                 heightFactor: percentage,
 
