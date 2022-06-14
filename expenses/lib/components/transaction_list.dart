@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
 
-  const TransactionList(this.transactions, {Key? key}); // recebe a lista de transações
+  const TransactionList(this.transactions,
+      {Key? key}); // recebe a lista de transações
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,8 @@ class TransactionList extends StatelessWidget {
                   transactions.length, // recebe a quantidade de transações
               itemBuilder: (ctx, index) {
                 final tr = transactions[index]; // recebe a transação atual
-                return Card(
 
+                return Card(
                   elevation: 5,
                   margin: const EdgeInsets.symmetric(
                     vertical: 8,
@@ -48,8 +49,10 @@ class TransactionList extends StatelessWidget {
                     leading: CircleAvatar(
                       backgroundColor: Colors.purple,
                       radius: 30,
+
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
+                        
                         child: FittedBox(
                           child: Text('R\$${tr.value}'),
                         ),

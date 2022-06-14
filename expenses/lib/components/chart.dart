@@ -36,7 +36,7 @@ class Chart extends StatelessWidget {
             0], // Pegando a primeira letra do dia da semana selecionado
         'value': totalSum,
       };
-    });
+    }).reversed.toList();// reverte a lista
   }
 
   double get _weekTotalValue {
@@ -48,7 +48,6 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
@@ -60,11 +59,11 @@ class Chart extends StatelessWidget {
           children: groupedTransactions.map((tr) {
             return Flexible(
               fit: FlexFit.tight, // distância iguais entre os elementos
-              
+
               child: ChartBar(
                 label: tr['day'].toString(),
                 value: double.parse(tr['value'].toString()),
-                percentage: (tr['value'] as double) /_weekTotalValue,
+                percentage: _weekTotalValue == 0 ? 0 : (tr['value'] as double) / _weekTotalValue,
               ),
             );
           }).toList(),
