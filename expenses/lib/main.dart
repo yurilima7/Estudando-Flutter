@@ -16,28 +16,21 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
-
+      home: const MyHomePage(),
       theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
           primary: Colors.purple,
           secondary: Colors.amber,
         ),
-
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: const TextStyle(
-                fontFamily: 'OpenSans',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-
-              button: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold
-              )
-        ),
-        
+            headline6: const TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            button: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold)),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'OpenSans',
@@ -51,7 +44,7 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -88,6 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop(); // Fecha o modal
   }
 
+  // função responsável por deletar uma transação a partir do id da mesma
+  _removeTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tr) => tr.id == id);
+    });
+  }
+
   _opentransactionFormModal(BuildContext context) {
     // abre o modal para adição de transações
     showModalBottomSheet(
@@ -120,7 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Chart(_recentTransactions),
 
             TransactionList(
-                _transactions), // chama a exibição das listas de transações (seus cards)
+                _transactions,
+                _removeTransaction), // chama a exibição das listas de transações (seus cards)
           ],
         ),
       ),

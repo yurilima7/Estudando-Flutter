@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget {
-  //const ChartBar({Key? key}) : super(key: key);
 
   final String label;
   final double value;
   final double percentage;
 
   const ChartBar(
-      {required this.label, required this.value, required this.percentage});
+      {required this.label, required this.value, required this.percentage, Key? key}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class ChartBar extends StatelessWidget {
           height: 20,
           child: FittedBox(
             // diminui o valor do texto para se adequar na tela
-            child: Text('${value.toStringAsFixed(2)}'),
+            child: Text(value.toStringAsFixed(2)),
           ),
         ),
         const SizedBox(

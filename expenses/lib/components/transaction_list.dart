@@ -4,14 +4,14 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final void Function(String) onRemove;
 
-  const TransactionList(this.transactions,
-      {Key? key}); // recebe a lista de transações
+  const TransactionList(this.transactions, this.onRemove, {Key? key}):super(key: key); // recebe a lista de transações
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 520,
       child: transactions.isEmpty
           ? Column(
               // se transação vazia
@@ -44,15 +44,12 @@ class TransactionList extends StatelessWidget {
                     vertical: 8,
                     horizontal: 5,
                   ),
-
                   child: ListTile(
                     leading: CircleAvatar(
                       backgroundColor: Colors.purple,
                       radius: 30,
-
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
-                        
                         child: FittedBox(
                           child: Text('R\$${tr.value}'),
                         ),
@@ -67,6 +64,13 @@ class TransactionList extends StatelessWidget {
                     // setando o subtitulo
                     subtitle: Text(
                       DateFormat('d MMM y').format(tr.date),
+                    ),
+
+                    // adiciona o botão de deletar
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () => onRemove(tr.id),
                     ),
                   ),
                 );

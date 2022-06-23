@@ -4,11 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class Chart extends StatelessWidget {
-  //const Chart({Key? key}) : super(key: key);
-
   final List<Transaction> recentTransaction;
 
-  Chart(this.recentTransaction);
+  const Chart(this.recentTransaction, {Key? key}) : super(key: key);
 
   List<Map<String, dynamic>> get groupedTransactions {
     // retorna uma list e dentro dessa list um map
@@ -36,7 +34,7 @@ class Chart extends StatelessWidget {
             0], // Pegando a primeira letra do dia da semana selecionado
         'value': totalSum,
       };
-    }).reversed.toList();// reverte a lista
+    }).reversed.toList(); // reverte a lista
   }
 
   double get _weekTotalValue {
@@ -63,7 +61,9 @@ class Chart extends StatelessWidget {
               child: ChartBar(
                 label: tr['day'].toString(),
                 value: double.parse(tr['value'].toString()),
-                percentage: _weekTotalValue == 0 ? 0 : (tr['value'] as double) / _weekTotalValue,
+                percentage: _weekTotalValue == 0
+                    ? 0
+                    : (tr['value'] as double) / _weekTotalValue,
               ),
             );
           }).toList(),

@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime)? onSubmit;
 
-  const TransactionForm(this.onSubmit); // recebe os dados pós inserção
+  const TransactionForm(this.onSubmit, {Key? key}): super(key: key); // recebe os dados pós inserção
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
