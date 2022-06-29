@@ -99,8 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    final appBar = AppBar(
         title: const Text('Despesas Pessoais'), // Titulo Superior
         actions: <Widget>[
           IconButton(
@@ -110,18 +109,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 context), // chama a abertura do modal para inserir novas transações
           )
         ],
-      ),
+      );
+
+    final availableHeight = MediaQuery.of(context).size.height // tamanho completo da tela
+    - appBar.preferredSize.height // tamanho do appBar
+    - MediaQuery.of(context).padding.top; // do topo
+
+    return Scaffold(
+      appBar: appBar,
 
       body: SingleChildScrollView(
         // responsável pela scroll view geral da tela
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Chart(_recentTransactions),
+            SizedBox(
+              height: availableHeight * 0.3, // tamanho do gráfico
+              child: Chart(_recentTransactions),
+            ),
 
-            TransactionList(
-                _transactions,
-                _removeTransaction), // chama a exibição das listas de transações (seus cards)
+            SizedBox(
+              height: availableHeight * 0.7, // tamanho da lista
+              child: TransactionList(_transactions,_removeTransaction),
+            ), // chama a exibição das listas de transações (seus cards)
           ],
         ),
       ),
