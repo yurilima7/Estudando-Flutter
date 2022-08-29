@@ -6,11 +6,12 @@ class Resposta extends StatelessWidget {
 
   final void Function() quandoSelecionado;
 
-  Resposta(this.texto, this.quandoSelecionado);
+  const Resposta({required this.texto, required this.quandoSelecionado, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context){
-    return Container(
+    return SizedBox(
 
       width: double.infinity,
 

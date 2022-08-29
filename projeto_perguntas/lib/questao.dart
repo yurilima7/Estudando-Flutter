@@ -4,7 +4,8 @@ class Questao extends StatelessWidget {
 
   final String texto;
 
-  const Questao(this.texto);
+  const Questao({required this.texto, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,8 @@ class Resultado extends StatelessWidget{
   final int pontuacao;
   final void Function() reiniciarQuestionario;
 
-  Resultado(this.pontuacao, this.reiniciarQuestionario);
+  const Resultado({required this.pontuacao, required this.reiniciarQuestionario, Key? key})
+      : super(key: key);
 
   String get fraseResultado {
     if(pontuacao < 8) {
