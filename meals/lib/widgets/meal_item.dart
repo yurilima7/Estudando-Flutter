@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/utils/app_routes.dart';
 
-class Mealtem extends StatelessWidget {
+class MealItem extends StatelessWidget {
   final Meal meal;
 
-  const Mealtem({Key? key, required this.meal}) : super(key: key);
+  const MealItem(this.meal, {Key? key}) : super(key: key);
   // navegando para tela de detalhes
   void _selectMeal(BuildContext context){
     Navigator.of(context).pushNamed(AppRoutes.mealDetail, arguments: meal);
