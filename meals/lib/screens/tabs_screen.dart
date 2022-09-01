@@ -40,7 +40,7 @@ class _TabsScreenState extends State<TabsScreen> {
       bottomNavigationBar: BottomNavigationBar(
 
         onTap: _selectScreen,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Colors.white, // quando não selecionado
         selectedItemColor: Theme.of(context).colorScheme.secondary, // selecionado
         currentIndex: _selectedScreenIndex, // selecionado atualmente
