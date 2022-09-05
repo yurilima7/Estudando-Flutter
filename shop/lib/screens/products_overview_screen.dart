@@ -3,10 +3,10 @@ import 'package:shop/data/dummy_data.dart';
 import 'package:shop/models/product.dart';
 import 'package:shop/widgets/product_item.dart';
 
-class ProductsOverviewPage extends StatelessWidget {
+class ProductsOverviewScreen extends StatelessWidget {
   // recebendo a lista de produtos
   final List<Product> loadedProducts = dummyProducts;
-  ProductsOverviewPage({Key? key}) : super(key: key);
+  ProductsOverviewScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
