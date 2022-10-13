@@ -1,9 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:great_places/screens/map_screen.dart';
+import 'package:great_places/utils/location_util.dart';
 import 'package:location/location.dart';
 
 class LocationInput extends StatefulWidget {
+  final Function onSelectPosition;
 
-  const LocationInput({ Key? key }) : super(key: key);
+  const LocationInput({ Key? key, required this.onSelectPosition}) : super(key: key);
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -12,8 +18,44 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   String? _previewImageUrl;
 
+  void _showPreview(double lat, double lng){
+    final staticMapImageUrl = LocationUtil.generateLocationPreviewImage(
+      latitude: lat,
+      longitude: lng,
+    );
+
+    setState(() {
+      _previewImageUrl = staticMapImageUrl;
+    });
+  }
+
   Future<void> _getCurrentUserLocation() async {
-    final locData = await Location().getLocation();
+    try {
+      final locData = await Location().getLocation();
+
+      _showPreview(locData.latitude!, locData.longitude!);
+      widget.onSelectPosition(LatLng(locData.latitude!,  locData.longitude!));
+    } catch (e) {
+      return;
+    }  
+  }
+
+  Future<void> _selectOnMap() async {
+    final LatLng selectPosition = await Navigator.of(context).push(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (ctx) => const MapScreen(),
+      ),
+    );
+
+    if (selectPosition == null) {
+      return;
+    }
+
+    _showPreview(selectPosition.latitude, selectPosition.longitude);
+
+    widget.onSelectPosition(selectPosition);
+    log(selectPosition.latitude.toString());
   }
 
   @override
@@ -51,7 +93,7 @@ class _LocationInputState extends State<LocationInput> {
             TextButton.icon(
               icon: const Icon(Icons.map),
               label: const Text('Selecione no Mapa'),
-              onPressed: () {},
+              onPressed: _selectOnMap,
             ),
           ],
         )
