@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:tests/screens/gallery_access.dart';
-// import 'package:tests/screens/theme_screen.dart';
-// import 'package:tests/screens/sliver_app_bar_transp.dart';
+import 'package:tests/screens/gallery_access.dart';
+import 'package:tests/screens/home.dart';
+import 'package:tests/screens/theme_screen.dart';
+import 'package:tests/screens/sliver_app_bar_transp.dart';
 import 'package:tests/screens/sliver_screen_app_bar.dart';
 import 'package:tests/screens/splash.dart';
 
@@ -27,7 +28,11 @@ class MainApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routes: {
+          '/home': (context) => const Home(),
+          '/galeryAccess': (context) => const GalleryAccess(),
           '/sliverBar': (context) => const SliverScreenAppBar(),
+          '/sliverTransp': (context) => const SliverAppBarTransp(),
+          '/themeScreen': (context) => const ThemeScreen(),
         },
       ),
     );

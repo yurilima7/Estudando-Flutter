@@ -22,7 +22,7 @@ class _SplashState extends State<Splash> {
       Timer(duration, () {
         if (mounted) {
           Navigator.of(context).pushNamedAndRemoveUntil(
-              '/sliverBar', (route) => false);
+              '/home', (route) => false);
         }
       });
     }
