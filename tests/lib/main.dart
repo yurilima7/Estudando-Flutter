@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tests/screens/gallery_access.dart';
 import 'package:tests/screens/home.dart';
+import 'package:tests/screens/list_sales.dart';
 import 'package:tests/screens/post_it.dart';
 import 'package:tests/screens/theme_screen.dart';
 import 'package:tests/screens/sliver_app_bar_transp.dart';
@@ -35,6 +36,7 @@ class MainApp extends StatelessWidget {
           '/sliverTransp': (context) => const SliverAppBarTransp(),
           '/themeScreen': (context) => const ThemeScreen(),
           '/postItScreen': (context) => const PostIt(),
+          '/dummySalesScreen': (context) => const ListSales(),
         },
       ),
     );
