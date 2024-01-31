@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular_example/app/model/categoria_controller.dart';
 
 class CategoriaPage extends StatefulWidget {
   final String? categoria;
@@ -25,6 +26,16 @@ class _CategoriaPageState extends State<CategoriaPage> {
           children: [
             Text(Modular.args.data ?? 'Não foi enviado a categoria'),
             Text(widget.categoria ?? 'Não foi enviado a categoria'),
+            TextButton(
+              onPressed: () {
+                var controller = Modular.get<CategoriaController>();
+                print(controller.hashCode);
+              },
+
+              child: const Text(
+                'Get Controller',
+              ),
+            )
           ],
         ),
       ),
