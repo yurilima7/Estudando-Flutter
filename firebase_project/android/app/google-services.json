@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "996129429920",
+    "project_id": "fir-example-adf-7696e",
+    "storage_bucket": "fir-example-adf-7696e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996129429920:android:d39603ad2c0be98701acc5",
+        "android_client_info": {
+          "package_name": "br.com.yurilima.firebase_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvBT-myeAK7ehZsKma6GEBnDWUa3H_Y2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
