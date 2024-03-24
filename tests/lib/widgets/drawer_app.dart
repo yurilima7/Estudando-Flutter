@@ -43,6 +43,11 @@ class DrawerApp extends StatelessWidget {
             title: const Text('Vendas'),
             onTap: () => Navigator.of(context).pushNamed('/dummySalesScreen'),
           ),
+
+          ListTile(
+            title: const Text('Assinatura'),
+            onTap: () => Navigator.of(context).pushNamed('/signature'),
+          ),
         ],
       ),
     );
