@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tests/screens/gallery_access.dart';
 import 'package:tests/screens/home.dart';
 import 'package:tests/screens/list_sales.dart';
+import 'package:tests/screens/maps_screen.dart';
 import 'package:tests/screens/post_it.dart';
 import 'package:tests/screens/signature_screen.dart';
 import 'package:tests/screens/theme_screen.dart';
@@ -44,6 +45,7 @@ class MainApp extends StatelessWidget {
           '/postItScreen': (context) => const PostIt(),
           '/dummySalesScreen': (context) => const ListSales(),
           '/signature': (context) => const SignatureScreen(),
+          '/mapsScreen': (context) => const MapsScreen(),
         },
       ),
     );
