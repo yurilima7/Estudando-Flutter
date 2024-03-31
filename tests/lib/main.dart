@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tests/screens/draggable_screen.dart';
 import 'package:tests/screens/gallery_access.dart';
 import 'package:tests/screens/home.dart';
 import 'package:tests/screens/list_sales.dart';
@@ -46,6 +47,7 @@ class MainApp extends StatelessWidget {
           '/dummySalesScreen': (context) => const ListSales(),
           '/signature': (context) => const SignatureScreen(),
           '/mapsScreen': (context) => const MapsScreen(),
+          '/draggableScreen': (context) => const DraggableScreen(),
         },
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tests/maps/locations.dart' as locations;
+// import 'package:tests/maps/locations.dart' as locations;
 import 'package:geocoding/geocoding.dart';
 
 class MapsScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class MapsScreen extends StatefulWidget {
 class _MapsScreenState extends State<MapsScreen> {
   late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  // final LatLng _center = const LatLng(45.521563, -122.677433);
 
   final Map<String, Marker> _markers = {};
 
@@ -63,33 +63,33 @@ class _MapsScreenState extends State<MapsScreen> {
     });
   }
 
-  void _onMapCreated3(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // void _onMapCreated3(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
   // final originAddress = '1600 Amphitheatre Parkway, Mountain View, CA'; // Exemplo de endereço de origem
   // final destinationAddress = '1 Infinite Loop, Cupertino, CA'; // Exemplo de endereço de destino
 
-  Future<void> _onMapCreated2(GoogleMapController controller) async {
-    final googleOffices = await locations.getGoogleOffices();
+  // Future<void> _onMapCreated2(GoogleMapController controller) async {
+  //   final googleOffices = await locations.getGoogleOffices();
 
-    setState(() {
-      _markers.clear();
+  //   setState(() {
+  //     _markers.clear();
 
-      for (final office in googleOffices.offices) {
-        final marker = Marker(
-          markerId: MarkerId(office.name),
-          position: LatLng(office.lat, office.lng),
-          infoWindow: InfoWindow(
-            title: office.name,
-            snippet: office.address,
-          ),
-        );
+  //     for (final office in googleOffices.offices) {
+  //       final marker = Marker(
+  //         markerId: MarkerId(office.name),
+  //         position: LatLng(office.lat, office.lng),
+  //         infoWindow: InfoWindow(
+  //           title: office.name,
+  //           snippet: office.address,
+  //         ),
+  //       );
 
-        _markers[office.name] = marker;
-      }
-    });
-  }
+  //       _markers[office.name] = marker;
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
